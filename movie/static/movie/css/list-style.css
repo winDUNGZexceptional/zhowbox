@@ -8,6 +8,10 @@
 	width: 25%;
 }
 
+.movie-item {
+	min-height: 100px;
+}
+
 .movie-info {
 	height: 120px;
 	width: 75%;
