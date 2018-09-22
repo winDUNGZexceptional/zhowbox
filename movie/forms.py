@@ -20,7 +20,11 @@ class AddMovieForm(forms.ModelForm):
 		help_text = 'Please summarize the storyline.'
 		)
 
-	date_screened = forms.DateField()
+	date_screened = forms.DateField(
+		widget = forms.widgets.DateInput(format="%m-%d-%Y"),
+		input_formats = ("%m-%d-%Y", "%m/%d/%Y"),
+		help_text = "MM-DD-YYYY or MM/DD/YYYY"
+		)
 
 
 	class Meta:

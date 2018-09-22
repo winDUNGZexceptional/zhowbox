@@ -1,0 +1,13 @@
+{% extends 'movie/base.html' %}
+
+{% block main %}
+
+
+<h1>{{ movie.title }}</h1>
+<p><strong>{{ movie.director }}</strong></p>
+<p>{{ movie.summary }}</p>
+
+<a href="{% url 'movie:update' %}">Edit</a>
+<a href="#">Delete</a>
+
+{% endblock %}

@@ -14,6 +14,7 @@ class Movie(models.Model):
 
 	likes = models.PositiveIntegerField(default=0)
 
+	is_active = models.BooleanField(default=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	last_updated = models.DateTimeField(auto_now=True)
 
