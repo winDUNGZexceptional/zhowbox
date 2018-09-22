@@ -2,11 +2,13 @@
 
 {% block main %}
 
-<!-- list all the movies -->
-{% for mov in movies %}
-<a href="{% url 'movie:details' mov.id %}">
-	<h1>{{ mov.title }} - {{ mov.date_screened }}</h1>
-</a>
-{% endfor %}
+<main class="container-fluid">
+	<!-- list all the movies -->
+	{% for mov in movies %}
+	<a href="{% url 'movie:details' mov.id %}">
+		<h1>{{ mov.title }} - {{ mov.date_screened }}</h1>
+	</a>
+	{% endfor %}
 
+</main>
 {% endblock %}

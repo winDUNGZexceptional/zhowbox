@@ -2,14 +2,14 @@
 
 
 {% block main %}
+<main class="container-fluid">
 
+	<form method="POST">
 
-<form method="POST">
+		{# TO REUSE ON UPDATE #}
+		{% include 'movie/parts/form.html' %}
 
-	{# TO REUSE ON UPDATE #}
-	{% include 'movie/parts/form.html' %}
+	</form>
 
-</form>
-
-
+</main>
 {% endblock %}

@@ -1,2 +1,45 @@
 
-<h1>Greetings: {{ greetings }}</h1>
+
+<header class="container-fluid">
+	<nav class="navbar navbar-default">
+
+		<div class="navbar-header">
+			<button 
+				type="button" 
+				class="navbar-toggle" 
+				data-toggle="collapse" 
+				data-target="#navigation_bar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<a 
+				href="{% url 'movie:list' %}"
+				class="navbar-brand">
+				the ZhowBox! 
+				<span class="glyphicon glyphicon-thumbs-down"></span>
+			</a>
+		</div><!-- navbar-header -->
+
+		<!--------------------------------------------------------- 
+
+					THIS IS THE DIV THAT WILL COLLAPSE
+		
+		 ---------------------------------------------------------->
+		<div class="collapse navbar-collapse" id="navigation_bar">
+			<ul class="navbar-nav nav">
+				<li><a href="{% url 'movie:list' %}">Home</a></li>
+				<li><a href="{% url 'movie:add' %}">Add Movie</a></li>
+			</ul>
+
+			{% if greetings %}
+			<ul class="navbar-nav nav" id="greetings">
+				<li><a href="#">{{ greetings }}</a></li>
+			</ul>
+			{% endif %}
+		</div>
+
+	</nav>
+</header>
+

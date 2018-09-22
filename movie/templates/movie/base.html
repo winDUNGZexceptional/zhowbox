@@ -1,6 +1,12 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" 
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
 	{# FOR AJAX CSRF's #}
 	{% block metas %}{% endblock %}
 
@@ -14,16 +20,16 @@
 	<link href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-+ENW/yibaokMnme+vBLnHMphUYxHs34h9lpdbSLuAwGkOKFRl4C34WkjazBtb7eT" crossorigin="anonymous">
 	<!-- custom links -->
 	{% block links %}{% endblock %}
+	<link rel="stylesheet" type="text/css" href="{% static 'movie/css/main-style.css' %}">
 </head>
 <body>
 	{% include 'movie/parts/header.html' %}
 
-
+	
 	{% block main %}{% endblock %}
 
 
-	<!-- soon to be include -->
-	{% block footer %}{% endblock %}
+	{% include 'movie/parts/footer.html' %}
 
 
 	{% block modals %}{% endblock %}

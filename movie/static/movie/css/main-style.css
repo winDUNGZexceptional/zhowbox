@@ -1,0 +1,74 @@
+/* DEFAULT STYLE = MOBILE. */
+
+
+/*****************************************
+
+				HEADER STYLING
+
+******************************************/
+h1 {
+	font-size: 30px;
+}
+
+header.container-fluid {
+	padding: 0px;
+}
+
+ul.navbar-nav.nav li {
+	text-align: center;
+}
+
+#greetings {
+	font-size: 19px;
+}
+
+/*****************************************
+
+				MAIN STYLING
+
+******************************************/
+
+main.container-fluid {
+	margin-bottom: 60px;
+}
+
+
+/***************************************
+	
+			FOOTER STYLING
+
+*****************************************/
+
+.footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	/*background-color: #f3f3f3;*/
+	height: 50px;
+}
+
+
+
+
+
+/*******************************************
+
+				CUSTOM
+
+********************************************/
+
+.flex {
+	display: flex;
+}
+
+.flex--full-center {
+	height: 100%;
+	justify-content: center;
+}
+
+.flex--full-center p {
+	margin: 0px;
+	display: block;
+	align-self: center;
+}
+
