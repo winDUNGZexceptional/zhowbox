@@ -2,12 +2,13 @@
 
 {% block main %}
 
-
+<!-- MOVIE DETAILS -->
 <h1>{{ movie.title }}</h1>
 <p><strong>{{ movie.director }}</strong></p>
 <p>{{ movie.summary }}</p>
 
-<a href="{% url 'movie:update' %}">Edit</a>
+<!-- ACTIONS -->
+<a href="{% url 'movie:update' movie.id %}">Edit</a>
 <a href="#">Delete</a>
 
 {% endblock %}

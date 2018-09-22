@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# bootstrapform to enable load bootstrap
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

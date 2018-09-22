@@ -2,8 +2,11 @@
 
 {% block main %}
 
-
-<h1>Hello World!</h1>
-
+<!-- list all the movies -->
+{% for mov in movies %}
+<a href="{% url 'movie:details' mov.id %}">
+	<h1>{{ mov.title }} - {{ mov.date_screened }}</h1>
+</a>
+{% endfor %}
 
 {% endblock %}
