@@ -1,13 +1,49 @@
 {% extends 'movie/base.html' %}
+{% load staticfiles %}
+
+{% block links %}
+<link 
+	rel="stylesheet" 
+	type="text/css" 
+	href="{% static 'movie/css/list-style.css' %}">
+{% endblock %}
 
 {% block main %}
 
 <main class="container-fluid">
+	<div class="col-xs-12">
+		<h1>Movie List</h1>
+		<hr>		
+	</div>
+
 	<!-- list all the movies -->
-	{% for mov in movies %}
-	<a href="{% url 'movie:details' mov.id %}">
-		<h1>{{ mov.title }} - {{ mov.date_screened }}</h1>
-	</a>
+	{% for movie in movies %}
+	<div class="col-xs-12">
+		<div class="flex movie-item">
+			<div class="image-box">
+				<img 
+					src="https://placehold.it/150x200" 
+					class="img-responsive">
+			</div>
+			<div class="movie-info flex wrap">
+				<div class="movie-title flex">
+					<a href="{% url 'movie:details' movie.id %}">
+						<strong>{{ movie.title }}</strong>
+					</a>
+				</div>
+				<div class="movie-description flex wrap">
+					<p class="flex--start">
+						<strong>Summary:</strong> {{ movie.summary|truncatechars:100 }}
+					</p>
+
+					<p class="screened flex--end">
+						Date screened: {{ movie.date_screened }}
+					</p>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
 	{% endfor %}
 
 </main>

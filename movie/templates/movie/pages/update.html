@@ -3,13 +3,22 @@
 
 {% block main %}
 
-{# cannot use PUT it will be redirected to GET #}
-<form method="POST">
+<main class="container-fluid">
+	{# cannot use PUT it will be redirected to GET #}
+	<form method="POST">
 
-	{# TO REUSE ON ADD #}
-	{% include 'movie/parts/form.html' %}
+		{# TO REUSE ON ADD #}
+		{% include 'movie/parts/form.html' %}
 
-</form>
+		<a href="{% url 'movie:details' movie.id %}">
+			<button
+				type="button"
+				class="btn btn-info">
+				Cancel
+			</button>
+		</a>
 
+	</form>
+</main>
 
 {% endblock %}

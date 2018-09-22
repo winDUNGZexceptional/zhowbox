@@ -7,7 +7,7 @@
 
 ******************************************/
 h1 {
-	font-size: 30px;
+	font-size: 24px;
 }
 
 header.container-fluid {
@@ -40,7 +40,7 @@ main.container-fluid {
 *****************************************/
 
 .footer {
-	position: absolute;
+	position: fixed;
 	bottom: 0px;
 	width: 100%;
 	/*background-color: #f3f3f3;*/
@@ -61,6 +61,10 @@ main.container-fluid {
 	display: flex;
 }
 
+.wrap {
+	flex-wrap: wrap;
+}
+
 .flex--full-center {
 	height: 100%;
 	justify-content: center;
@@ -72,3 +76,10 @@ main.container-fluid {
 	align-self: center;
 }
 
+.flex--end {
+	align-self: flex-end;
+}
+
+.flex--top {
+	align-self: flex-start;
+}

@@ -9,6 +9,14 @@
 		{# TO REUSE ON UPDATE #}
 		{% include 'movie/parts/form.html' %}
 
+		<a href="{% url 'movie:list' %}">
+			<button
+				type="button"
+				class="btn btn-info">
+				Cancel
+			</button>
+		</a>
+
 	</form>
 
 </main>

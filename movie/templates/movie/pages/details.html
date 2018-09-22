@@ -22,40 +22,46 @@
 
 
 {% block main %}
+<main class="container-fluid">
+	<!-- MOVIE DETAILS -->
+	<h1>{{ movie.title }}</h1>
 
-<!-- MOVIE DETAILS -->
-<h1>{{ movie.title }}</h1>
-<p><strong>{{ movie.director }}</strong></p>
-<p>{{ movie.summary }}</p>
-
-<!-- ACTIONS -->
-<!-- <form action="{% url 'movie:like' movie.id %}" method="POST">{% csrf_token %} -->
-	<!-- should be type button -->
-<button
-	type="button"
-	class="btn btn-default"
-	id="send_like">
-	<span class="glyphicon glyphicon-thumbs-up"></span> 
-	<span id="movie_likes">{{ movie.likes }}</span> Likes
-</button>
-<!-- </form> -->
-</a>
-<a href="{% url 'movie:update' movie.id %}">
+	<!-- ACTIONS -->
+	<!-- <form action="{% url 'movie:like' movie.id %}" method="POST">{% csrf_token %} -->
+		<!-- should be type button -->
 	<button
 		type="button"
-		class="btn btn-warning">
-		<span class="glyphicon glyphicon-pencil"></span> 
-		Edit
+		class="btn btn-default btn-sm"
+		id="send_like">
+		<span class="glyphicon glyphicon-thumbs-up"></span> 
+		<span id="movie_likes">{{ movie.likes }}</span> Likes
 	</button>
-</a>
-<button 
-	type="button" 
-	class="btn btn-danger"
-	data-toggle="modal"
-	data-target="#delete_modal">
-	<span class="glyphicon glyphicon-trash"></span> 
-	<!-- TEXT -->
-	Delete
-</button>
+	<!-- </form> -->
+	</a>
+	<a href="{% url 'movie:update' movie.id %}">
+		<button
+			type="button"
+			class="btn btn-warning btn-sm">
+			<span class="glyphicon glyphicon-pencil"></span> 
+			Edit
+		</button>
+	</a>
+	<button 
+		type="button" 
+		class="btn btn-danger btn-sm"
+		data-toggle="modal"
+		data-target="#delete_modal">
+		<span class="glyphicon glyphicon-trash"></span> 
+		<!-- TEXT -->
+		Delete
+	</button>
 
+	<hr>
+
+	<!-- MOVIE FURTHER DETAILS -->
+	<p><strong>{{ movie.director }}</strong></p>
+	<p>Summary:</p>
+	<p>{{ movie.summary }}</p>
+
+</main>
 {% endblock %}

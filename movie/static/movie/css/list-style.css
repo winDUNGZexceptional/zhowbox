@@ -1,0 +1,42 @@
+/******************************************
+
+		MOBILE VIEW OF LIST VIEW
+
+********************************************/
+
+.image-box {
+	width: 25%;
+}
+
+.movie-info {
+	height: 120px;
+	width: 75%;
+}
+
+.movie-title {
+	justify-content: center;
+	width: 100%;
+	height: 20%;
+	font-size: 12px;
+}
+
+.movie-title a {
+	display: block;
+}
+
+.movie-description {
+	padding-left: 8px;
+	padding-right: 8px;
+	height: 80%;
+}
+
+.movie-description p {
+	width: 100%;
+	display: block;
+	font-size: 10px;
+}
+
+.screened {
+	text-align: right;
+}
+
