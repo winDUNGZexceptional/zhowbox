@@ -1,6 +1,6 @@
 from django import views
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy, reverse
 from django.views.generic import edit
 from django.shortcuts import render
@@ -97,18 +97,33 @@ class DeletePage(edit.DeleteView):
 
 
 
-# AJAX SUPPORT IN ajax.py ALIGNED TO THIS views.py
-class AddLike(ajax.AjaxableLike, edit.UpdateView):
+# class AddLike(ajax.AjaxableLike, edit.UpdateView):
 
-	model = Movie
-	fields = ['likes']
+# 	model = Movie
+# 	fields = ['likes']
+
+# 	# def post(self, request, *args, **kwargs):
+# 	# 	movie = Movie.objects.filter(pk=self.kwargs['pk']).first()
+# 	# 	movie.likes += 1
+# 	# 	movie.save()
+
+# 	# 	url_param = {
+# 	# 	'pk' : movie.id
+# 	# 	}
+# 	# 	# return HttpResponseRedirect( reverse('movie:details', kwargs=url_param) )
+
+class AddLike(views.View):
 
 	def post(self, request, *args, **kwargs):
 		movie = Movie.objects.filter(pk=self.kwargs['pk']).first()
 		movie.likes += 1
 		movie.save()
 
-		url_param = {
-		'pk' : movie.id
+		message = {
+		'status' : 'success',
+		'likes' : movie.likes,
 		}
-		return HttpResponseRedirect( reverse('movie:details', kwargs=url_param) )
+		return JsonResponse(
+			message, 
+			content_type = 'text/plain; charset=UTF-8',
+			safe = False)

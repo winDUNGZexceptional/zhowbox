@@ -36,11 +36,20 @@
 	class="btn btn-default"
 	id="send_like">
 	<span class="glyphicon glyphicon-thumbs-up"></span> 
-	{{ movie.likes }} Likes
+	<span id="movie_likes">{{ movie.likes }}</span> Likes
 </button>
 <!-- </form> -->
 </a>
-<a href="{% url 'movie:update' movie.id %}">Edit</a>
+<a href="{% url 'movie:update' movie.id %}">
+	<button
+		type="button"
+		class="btn btn-warning">
+		<span>
+			
+		</span>
+		Edit
+	</button>
+</a>
 <button 
 	type="button" 
 	class="btn btn-danger"
