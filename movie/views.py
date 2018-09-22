@@ -6,6 +6,7 @@ from django.views.generic import edit
 from django.shortcuts import render
 
 from movie import forms
+from movie.helpers.SessionHelper import SessionHelper
 from movie.models import Movie
 
 # Create your views here.
@@ -97,6 +98,7 @@ class DeletePage(edit.DeleteView):
 
 
 
+# ADD LIKE IN EVERY POST HERE. OF COURSE WITH CSRF FOR SECURITY.
 class AddLike(views.View):
 
 	def post(self, request, *args, **kwargs):
