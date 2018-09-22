@@ -10,6 +10,7 @@
 {% block metas %}
 {# this is different from {% csrf_token %} where this doesn't produce input #}
 <meta name="csrf" content="{{ csrf_token }}">
+<meta name="position_y" content="{{ movie.id }}">
 {% endblock %}
 
 
@@ -28,16 +29,16 @@
 <p>{{ movie.summary }}</p>
 
 <!-- ACTIONS -->
-<form action="{% url 'movie:like' movie.id %}" method="POST">{% csrf_token %}
+<!-- <form action="{% url 'movie:like' movie.id %}" method="POST">{% csrf_token %} -->
 	<!-- should be type button -->
 <button
-	type="submit"
+	type="button"
 	class="btn btn-default"
-	>
+	id="send_like">
 	<span class="glyphicon glyphicon-thumbs-up"></span> 
 	{{ movie.likes }} Likes
 </button>
-</form>
+<!-- </form> -->
 </a>
 <a href="{% url 'movie:update' movie.id %}">Edit</a>
 <button 
