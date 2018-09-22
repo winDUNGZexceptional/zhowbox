@@ -5,5 +5,5 @@ from movie import views
 app_name = 'movie'
 
 urlpatterns = [
-	path('', ),
+	path('', views.ListPage.as_view(), name='list'),
 ]
