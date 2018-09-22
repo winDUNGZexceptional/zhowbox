@@ -18,13 +18,24 @@ class ListPage(views.View):
 
 	template_name = 'movie/pages/list.html'
 
-
 	def get(self, request, *args, **kwargs):
+		if 'last_visited' in self.request.session:
+			greetings = SessionHelper.get_session(
+				self.request.session['last_visited']
+				)
+
+			greetings = 'You have visited this page last ' + greetings
+		else:
+			new_session = SessionHelper.create_session()
+			self.request.session['last_visited'] = new_session
+			print(self.request.session)
+			greetings = 'Welcome to our site!'
 
 		movie_list = Movie.objects.filter(is_active=True)
 
 		to_render = {
 		'movies' : movie_list,
+		'greetings' : greetings,
 		}
 		return render(self.request, self.template_name, to_render)
 
@@ -35,11 +46,11 @@ class DetailPage(views.View):
 	template_name = 'movie/pages/details.html'
 
 	def get(self, request, *args, **kwargs):
-
 		movie = Movie.objects.filter(pk=self.kwargs['pk']).first()
 
 		to_render = {
 		'movie' : movie,
+		# 'greetings' : greetings,
 		}
 		return render(self.request, self.template_name, to_render)
 

@@ -1,3 +1,5 @@
+from django.contrib.sessions.backends.db import SessionStore
+
 from datetime import date
 
 
@@ -5,17 +7,17 @@ from datetime import date
 class SessionHelper:
 
 	@staticmethod
-	def get_session(request):
-		if request.session.get('last_visited', False):
-			last_visited = request.session.get('last_visited')
-			SessionHelper.update_session(request)
-			return last_visited
+	def create_session():
+		ses = SessionStore()
+		ses['last_visited'] = date.today().strftime("%m-%d-%Y")
+		ses.save()
 
-		else:
-			return 'Welcome to our site!'
+		print(ses.session_key)
+		return ses.session_key
 
 
 	@staticmethod
-	def update_session(request):
-		request.session['last_visited'] = date.today().strftime("%m-%d-%Y")
-		return
+	def get_session(ses_key):
+		ses = SessionStore(session_key=ses_key)
+
+		return ses['last_visited']

@@ -11,13 +11,12 @@
 
 	<!-- BOOTSTRAP WITH THEME CDN -->
 	<link href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-+ENW/yibaokMnme+vBLnHMphUYxHs34h9lpdbSLuAwGkOKFRl4C34WkjazBtb7eT" crossorigin="anonymous">
+	<link href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-+ENW/yibaokMnme+vBLnHMphUYxHs34h9lpdbSLuAwGkOKFRl4C34WkjazBtb7eT" crossorigin="anonymous">
 	<!-- custom links -->
 	{% block links %}{% endblock %}
 </head>
 <body>
-	<!-- soon to be include -->
-	{% block header %}{% endblock %}
-
+	{% include 'movie/parts/header.html' %}
 
 
 	{% block main %}{% endblock %}
