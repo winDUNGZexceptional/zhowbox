@@ -2,11 +2,12 @@ from django import views
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import edit
 from django.shortcuts import render
 
 from movie import forms
-from movie.helpers.SessionHelper import SessionHelper
+from movie.helpers.SessionHelper import session_decorator, get_session
 from movie.models import Movie
 
 # Create your views here.
@@ -14,28 +15,23 @@ from movie.models import Movie
 
 
 # GET: DISPLAYS ALL THE MOVIES
+# method_decorator: assigns the decorator at a specific function inside a class
+# method_decorator(cont): in this case. dispatch to decorate all functions
+# kwargs['kwargs']['message'] from the decorator session_decorator
+@method_decorator(session_decorator, name='dispatch')
 class ListPage(views.View):
 
 	template_name = 'movie/pages/list.html'
 
 	def get(self, request, *args, **kwargs):
-		if 'last_visited' in self.request.session:
-			greetings = SessionHelper.get_session(
-				self.request.session['last_visited']
-				)
-
-			greetings = 'You have visited this page last ' + greetings
-		else:
-			new_session = SessionHelper.create_session()
-			self.request.session['last_visited'] = new_session
-			print(self.request.session)
-			greetings = 'Welcome to our site!'
-
 		movie_list = Movie.objects.filter(is_active=True)
+
+		# uncomment to clear sessions
+		# self.request.session.clear()
 
 		to_render = {
 		'movies' : movie_list,
-		'greetings' : greetings,
+		'greetings' : kwargs['kwargs']['message'],
 		}
 		return render(self.request, self.template_name, to_render)
 
