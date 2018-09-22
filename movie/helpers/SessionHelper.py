@@ -6,6 +6,10 @@ from django.urls import reverse
 from datetime import date
 
 
+
+# RETURNS THE SESSION_KEY TO STORE TO request.session['last_visited']
+# SessionStore() is for the sessions outside the views.
+# saved in the database.
 def create_session():
 	ses = SessionStore()
 	update_session(ses)
@@ -14,6 +18,7 @@ def create_session():
 	return ses.session_key
 
 
+# UPDATES THE EXISTING SESSION
 def update_session(ses):
 	ses['last_visited'] = date.today().strftime("%m-%d-%Y")
 	ses.save()
@@ -23,6 +28,7 @@ def update_session(ses):
 	return
 
 
+# COLLECTS AND UPDATES THE SESSION
 def get_session(ses_key):
 	ses = SessionStore(session_key=ses_key)
 	last_visited = ses['last_visited']
@@ -40,7 +46,7 @@ def session_decorator(view_function):
 			session_here = create_session()
 			request.session['last_visited'] = session_here
 
-			# THIS DEFINE THAT THE SESSION IS NEW
+			# IF THE SESSION IS NEW
 			message = {'message': 'Welcome to our site!'}
 
 		else:
@@ -50,6 +56,7 @@ def session_decorator(view_function):
 				)
 			update_session(existing_ses)
 			
+			# IF THE SESSION EXISTS
 			text = 'Welcome back! Your last visit was from ' + existing_ses['last_visited']
 			message	= {'message': text}
 
