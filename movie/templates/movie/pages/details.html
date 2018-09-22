@@ -1,5 +1,11 @@
 {% extends 'movie/base.html' %}
 
+
+{% block modals %}
+	{% include 'movie/parts/confirm_delete_modal.html' %}
+{% endblock %}
+
+
 {% block main %}
 
 <!-- MOVIE DETAILS -->
@@ -9,6 +15,13 @@
 
 <!-- ACTIONS -->
 <a href="{% url 'movie:update' movie.id %}">Edit</a>
-<a href="#">Delete</a>
+<button 
+	type="button" 
+	class="btn btn-danger"
+	data-toggle="modal"
+	data-target="#delete_modal">
+	<!-- TEXT -->
+	Delete
+</button>
 
 {% endblock %}

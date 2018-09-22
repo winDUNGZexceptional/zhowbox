@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+	{# FOR AJAX CSRF's #}
 	{% block metas %}{% endblock %}
 
 	{% block title %}
+	{# DEFAULT TITLE #}
 	<title>Welcome to ZhowBox!</title>
 	{% endblock %}
 
 	<!-- BOOTSTRAP WITH THEME CDN -->
-	<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/lumen/bootstrap.min.css" rel="stylesheet" integrity="sha384-DfbCiBdRiiNWvRTbHe5X9IfkezKzm0pCrZSKc7EM9mmSl/OyckwbYk3GrajL8Ngy" crossorigin="anonymous">
+	<link href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-+ENW/yibaokMnme+vBLnHMphUYxHs34h9lpdbSLuAwGkOKFRl4C34WkjazBtb7eT" crossorigin="anonymous">
 	<!-- custom links -->
 	{% block links %}{% endblock %}
 </head>
@@ -23,6 +25,9 @@
 
 	<!-- soon to be include -->
 	{% block footer %}{% endblock %}
+
+
+	{% block modals %}{% endblock %}
 
 	<!-- JQUERY CDN -->
 	<script

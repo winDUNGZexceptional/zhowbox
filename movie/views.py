@@ -1,4 +1,6 @@
 from django import views
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import edit
 from django.shortcuts import render
@@ -73,3 +75,25 @@ class UpdatePage(edit.UpdateView):
 		'pk' : self.object.id,
 		}
 		return reverse('movie:details', kwargs=url_param)
+
+
+# GET: (CUSTOM) FORM WILL INITIALLY GO HERE SO TO AVOID CONFIRM TEMPLATE,
+# GET(CONT): IT IS REDIRECTED TO THE DELETE METHOD 
+# DELETE: (CUSTOM) SOFT DELETION OF THE MOVIE. FROM is_active = True to False
+class DeletePage(edit.DeleteView):
+
+	model = Movie
+
+	def get(self, request, *args, **kwargs):
+		return self.delete(request, *args, **kwargs)
+
+	def delete(self, request, *args, **kwargs):
+		print('hello')
+		movie = Movie.objects.filter(pk=self.kwargs['pk']).first()
+		movie.is_active = False
+		movie.save()
+
+		messages.info(self.request, movie.title + " has been deleted.")
+		return HttpResponseRedirect( reverse('movie:list') )
+
+
