@@ -9,6 +9,7 @@ urlpatterns = [
 	path('add/', views.AddPage.as_view(), name='add'),
 	# uniformed from movie_id to pk since it will produce error on UpdateView.
 	path('movie/<int:pk>/', views.DetailPage.as_view(), name='details'),
-	path('movie/<int:pk>/update', views.UpdatePage.as_view(), name='update'),
-	path('movie/<int:pk>/delete', views.DeletePage.as_view(), name='delete'),
+	path('movie/<int:pk>/update/', views.UpdatePage.as_view(), name='update'),
+	path('movie/<int:pk>/delete/', views.DeletePage.as_view(), name='delete'),
+	path('movie/<int:pk>/like/', views.AddLike.as_view(), name='like'),
 ]
