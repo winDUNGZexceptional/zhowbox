@@ -5,7 +5,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import edit
 from django.shortcuts import render
 
-from movie import forms, ajax
+from movie import forms
 from movie.models import Movie
 
 # Create your views here.
@@ -96,21 +96,6 @@ class DeletePage(edit.DeleteView):
 		return HttpResponseRedirect( reverse('movie:list') )
 
 
-
-# class AddLike(ajax.AjaxableLike, edit.UpdateView):
-
-# 	model = Movie
-# 	fields = ['likes']
-
-# 	# def post(self, request, *args, **kwargs):
-# 	# 	movie = Movie.objects.filter(pk=self.kwargs['pk']).first()
-# 	# 	movie.likes += 1
-# 	# 	movie.save()
-
-# 	# 	url_param = {
-# 	# 	'pk' : movie.id
-# 	# 	}
-# 	# 	# return HttpResponseRedirect( reverse('movie:details', kwargs=url_param) )
 
 class AddLike(views.View):
 
